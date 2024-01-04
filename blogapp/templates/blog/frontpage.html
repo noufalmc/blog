@@ -1,0 +1,17 @@
+{% extends 'blog/base.html'%}
+
+
+{% block content %}
+<br>
+<br>
+<div class="row">
+    {% for posts in posts%}
+    <div class="col-md-3">
+<h1>{{posts.title}}</h1>
+        <p>{{posts.date}}</p>
+        <p>{{posts.intro}}</p>
+        <a href="{% url 'detail' posts.slug %}">Read More</a>
+    </div>
+{% endfor %}
+{% endblock %}
+</div>

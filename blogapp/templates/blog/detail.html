@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content%}
+<h1>{{detail.title}}</h1>
+<strong>{{detail.intro}}</strong>
+<p>{{detail.body}}</p>
+{% for comment in detail.comment.all %}
+<p><strong>{{comment.text}}</strong>
+Posted On:{{comment.date}}</p>
+
+{% endfor %}
+<form method="post" action="/{{detail.slug}}">
+{% csrf_token %}
+    {{ form.as_p }}
+
+    <button class="btn btn-success">Save</button>
+</form>
+{% endblock%}
